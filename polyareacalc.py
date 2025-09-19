@@ -47,21 +47,38 @@ class Square(Rectangle):
         
     def __str__(self):
         return f"Square(side={self.width})"
-    
-rect = Rectangle(10, 5)
-print(rect.get_area())
-rect.set_height(3)
-print(rect.get_perimeter())
-print(rect)
-print(rect.get_picture())
 
-sq = Square(9)
-print(sq.get_area())
-sq.set_side(4)
-print(sq.get_diagonal())
-print(sq)
-print(sq.get_picture())
+def main():
+    print("Rectangle and Square Area Calculator")
+    while True:
+        shape_type = input("Enter shape (rectangle/square) or 'E' to quit: ").strip().lower()
+        if shape_type == 'e':
+            break
+        elif shape_type == "rectangle":
+            try:
+                width = int(input("Enter the width of the rectangle: "))
+                height = int(input("Enter the height of the rectangle: "))
+                rect = Rectangle(width, height)
+                print(rect)
+                print(f"Area: {rect.get_area()}")
+                print(f"Perimeter: {rect.get_perimeter()}")
+                print(f"Diagonal: {rect.get_diagonal()}")
+                print(rect.get_picture())
+            except ValueError:
+                print("Invalid input. Please enter numeric values.")
+        elif shape_type == "square":
+            try:
+                side = int(input("Enter the side length of the square: "))
+                sq = Square(side)
+                print(sq)
+                print(f"Area: {sq.get_area()}")
+                print(f"Perimeter: {sq.get_perimeter()}")
+                print(f"Diagonal: {sq.get_diagonal()}")
+                print(sq.get_picture())
+            except ValueError:
+                print("Invalid input. Please enter a numeric value.")
+        else:
+            print("Unknown shape type. Please enter 'rectangle' or 'square'.")
 
-rect.set_height(8)
-rect.set_width(16)
-print(rect.get_amount_inside(sq))
+if __name__ == "__main__":
+    main()
